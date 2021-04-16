@@ -5,13 +5,14 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
     PrintLine(TEXT("Welcome to The Bull Cow Game!!")); // TEXT is used so Unreal can encode the string
-    PrintLine(TEXT("Input something and press Enter to clear screen"));
+    PrintLine(TEXT("Guess the 4 letter word!")); // Magic Number Remove!
+    PrintLine(TEXT("Press Enter to continue..."));
+    HiddenWord = TEXT("cake");
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {
     ClearScreen();
-    FString HiddenWord = TEXT("cake");
     if(Input == HiddenWord)
     {
         PrintLine(TEXT("You WIN!"));
@@ -20,6 +21,4 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     {
         PrintLine(TEXT("You Lose"));
     }
-
-    // PrintLine(Input);
 }
