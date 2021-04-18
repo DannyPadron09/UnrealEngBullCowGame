@@ -15,7 +15,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     // Welcomes the player
     PrintLine(TEXT("Welcome to The Bull Cow Game!!")); // TEXT is used so Unreal can encode the string
     PrintLine(TEXT("Guess the %i letter word!"), HiddenWord.Len()); // Magic Number Remove!
-    PrintLine(TEXT("Press Enter to continue..."));
+    PrintLine(TEXT("Enter your guess..."));
 
 
     // Ask user for guess
@@ -33,6 +33,7 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     if(Input == HiddenWord)
     {
         PrintLine(TEXT("You WIN!"));
+        // bGameOver = true;
     }
     else
     {
@@ -67,5 +68,7 @@ void UBullCowCartridge::SetupGame()
 
     // Set up lives
     Lives = 3;
+
+    // bGameOver = false;
 
 }
