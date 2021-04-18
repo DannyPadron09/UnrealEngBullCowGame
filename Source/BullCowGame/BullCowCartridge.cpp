@@ -10,7 +10,6 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     PrintLine(TEXT("Guess the 4 letter word!")); // Magic Number Remove!
     PrintLine(TEXT("Press Enter to continue..."));
 
-    // Sets up game
     SetupGame();
 
     // Ask user for guess
@@ -21,6 +20,8 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
 
     ClearScreen();
 
+
+
     //  Checking User guess
 
     if(Input == HiddenWord)
@@ -29,7 +30,14 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     }
     else
     {
-        PrintLine(TEXT("You Lose"));
+        if(Input.Len() == HiddenWord.Len())
+        {
+            PrintLine(TEXT("You have the right amount of letters but\nnot correct order"));
+        }
+        else
+        {
+            PrintLine(TEXT("Guess Again"));
+        }
     }
 
     // Check if word is isogram
