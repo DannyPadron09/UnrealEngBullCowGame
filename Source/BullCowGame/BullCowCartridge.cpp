@@ -4,13 +4,19 @@
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
 
-    // Welcomes the player
     Super::BeginPlay();
+    
+    SetupGame();
+
+    // Debug Line can turn On/Off as needed
+    // PrintLine(FString::Printf(TEXT("The HiddenWord is: %s"), *HiddenWord));
+    // PrintLine(TEXT("The HiddenWord is: %s.\nIt is %i characters long"), *HiddenWord, HiddenWord.Len());
+
+    // Welcomes the player
     PrintLine(TEXT("Welcome to The Bull Cow Game!!")); // TEXT is used so Unreal can encode the string
-    PrintLine(TEXT("Guess the 4 letter word!")); // Magic Number Remove!
+    PrintLine(TEXT("Guess the %i letter word!"), HiddenWord.Len()); // Magic Number Remove!
     PrintLine(TEXT("Press Enter to continue..."));
 
-    SetupGame();
 
     // Ask user for guess
 }
