@@ -17,19 +17,17 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {
 
-    // If game is over then ClearScreen() and SetupGame()
-    // else check User Guess
     if (bGameOver)
     {
         ClearScreen();
         SetupGame();
     }
-    else
+    else    // Checking Player Guess
     {
         if(Input == HiddenWord)
         {
             PrintLine(TEXT("You WIN!"));
-            // bGameOver = true;
+            EndGame();
         }
         else
         {
@@ -78,4 +76,5 @@ void UBullCowCartridge::SetupGame()
 void UBullCowCartridge::EndGame()
 {
     bGameOver = true;
+    PrintLine(TEXT("Press enter to Play Again."));
 }
