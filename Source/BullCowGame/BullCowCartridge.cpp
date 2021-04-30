@@ -110,21 +110,17 @@ bool UBullCowCartridge::IsIsogram(FString Word) const
    int32 Index = 0;
    int32 Comparison = Index + 1;
 
-   for (; Comparison < Word.Len(); Comparison++)
+   for (; Index < Word.Len(); Index++)
    {
-       if (Word[Index] == Comparison)
+       for (; Comparison < Word.Len(); Comparison++)
        {
-           return false;
+           if(Word[Index] == Word[Comparison])
+           {
+               return false;
+           }
        }
    }
-   
 
     return true;
-
-//    for (int32 i = 0; i < Word.Len(); i++)
-//    {
-//        PrintLine(TEXT("%c"), Word[i]);
-//    }
-   
 
 }
