@@ -106,6 +106,25 @@ bool UBullCowCartridge::IsIsogram(FString Word) const
         keep comparing until it reaches (Word.Len() - 1)
         if any  of the letters are the same return 'false'
     */
+
+   int32 Index = 0;
+   int32 Comparison = Index + 1;
+
+   for (; Comparison < Word.Len(); Comparison++)
+   {
+       if (Word[Index] == Comparison)
+       {
+           return false;
+       }
+   }
    
+
     return true;
+
+//    for (int32 i = 0; i < Word.Len(); i++)
+//    {
+//        PrintLine(TEXT("%c"), Word[i]);
+//    }
+   
+
 }
