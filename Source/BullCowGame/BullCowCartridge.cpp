@@ -45,6 +45,10 @@ void UBullCowCartridge::SetupGame()
     PrintLine(TEXT("You have %i lives."), Lives);
     PrintLine(TEXT("Enter your guess..."));
 
+
+    const TCHAR HW[] = TEXT("cake");
+    PrintLine(TEXT("Character 1 of the hidden word is: %c"), HW[0]);
+    HW;
 }
 
 void UBullCowCartridge::EndGame()
@@ -62,11 +66,13 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
             return;
         }
 
-        // Check if word is isogram
-        // if (!IsIsogram)
-        // {
-        //     PrintLine(TEXT("No repeating letters, guess again"));
-        // }
+        //Check if word is isogram
+        if (!IsIsogram())
+        {
+            
+            PrintLine(TEXT("No repeating letters, guess again"));
+            return;
+        }
         
         // Prompt to guess again
         // Check if right number of characters
@@ -74,25 +80,30 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
         {
             PrintLine(TEXT("Guess Again. \nYou have %i Lives left."), Lives);
             PrintLine(TEXT("The Hidden Word is %i letters long"), HiddenWord.Len());
+            PrintLine(TEXT("You have %i lives remaining"), Lives);
             return;
         }
 
         // Remove life if wrong guess
         PrintLine(TEXT("You have lost a life"));
-        --Lives;
+        PrintLine(TEXT("%i"), --Lives);
 
         // Check to see if Lives > 0
         if (Lives <= 0)
-            {
-                ClearScreen();
-                PrintLine(TEXT("You have no lives left!"));
-                PrintLine(TEXT("The Hidden Word was : %s"), *HiddenWord);
-                
-                EndGame();
-                return;
-            }
+        {
+            PrintLine(TEXT("You have no lives left!"));
+            PrintLine(TEXT("The Hidden Word was : %s"), *HiddenWord);
+
+            EndGame();
+            return;
+        }
 
         // Show the player the Bulls and the Cows
         PrintLine(TEXT("Guess again, you have %i lives left"), Lives);
 
+}
+
+bool UBullCowCartridge::IsIsogram()
+{
+    return true;
 }
