@@ -10,9 +10,8 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     
     SetupGame();
 
-    // Debug Line can turn On/Off as needed
-    // PrintLine(FString::Printf(TEXT("The HiddenWord is: %s"), *HiddenWord));
-    // PrintLine(TEXT("The HiddenWord is: %s.\nIt is %i characters long"), *HiddenWord, HiddenWord.Len());
+    
+    PrintLine(TEXT("The HiddenWord is: %s."), *HiddenWord);
 
 }
 
@@ -125,4 +124,4 @@ bool UBullCowCartridge::IsIsogram(FString Word) const
 
     return true;
 
-}
+} 
