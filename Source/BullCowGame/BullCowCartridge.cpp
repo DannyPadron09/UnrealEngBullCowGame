@@ -12,13 +12,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 
     PrintLine(TEXT("The number of possible words is %i."), Words.Num());
     PrintLine(TEXT("The HiddenWord is: %s."), *HiddenWord);
-
-    for (int32 i = 0; i != 5; i++)
-    {
-        PrintLine(TEXT("%s"), *Words[i]);
-    }
     
-
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
@@ -131,3 +125,23 @@ bool UBullCowCartridge::IsIsogram(FString Word) const
     return true;
 
 } 
+
+TArray<FString> UBullCowCartridge::GetValidWords(TArray<FString> WordList) const
+{
+
+TArray<FString> ValidWords;
+
+    for (int32 i = 0; i < Words.Num(); i++)
+    {
+        if (Words[i].Len() >= 4 && Words[i].Len() <= 8)
+        {
+            ValidWords.Emplace(Words[i]);
+        }
+    }
+    
+    for (int32 i = 0; i < ValidWords.Num(); i++)
+    {
+        PrintLine(TEXT("%s"), *ValidWords[i]);
+    }
+
+}
