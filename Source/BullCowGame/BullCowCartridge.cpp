@@ -7,12 +7,10 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 {
 
     Super::BeginPlay();
+
+    Isograms = GetValidWords(Words);
     
     SetupGame();
-
-    PrintLine(TEXT("The number of possible words is %i."), Words.Num());
-    PrintLine(TEXT("The number of valid words is: %i."), GetValidWords(Words).Num());
-    PrintLine(TEXT("The HiddenWord is: %s."), *HiddenWord);
     
 }
 
@@ -35,7 +33,7 @@ void UBullCowCartridge::SetupGame()
 {
 
     // Sets HiddenWord
-    HiddenWord = GetValidWords(Words)[FMath::RandRange(0, GetValidWords(Words).Num() - 1)];
+    HiddenWord = Isograms[FMath::RandRange(0, Isograms.Num() - 1)];
     // Set up lives
     Lives = HiddenWord.Len();
     
@@ -46,6 +44,8 @@ void UBullCowCartridge::SetupGame()
     PrintLine(TEXT("Guess the %i letter word!"), HiddenWord.Len());
     PrintLine(TEXT("You have %i lives."), Lives);
     PrintLine(TEXT("Enter your guess..."));
+    PrintLine(TEXT("The HiddenWord is: %s."), *HiddenWord);
+
 
 }
 
