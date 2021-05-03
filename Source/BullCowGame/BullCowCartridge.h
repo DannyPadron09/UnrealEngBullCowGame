@@ -26,7 +26,7 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 	bool IsIsogram(const FString& Word) const; // const before FString is to pass by reference 
 											   // const after is a promise to not change 'Member Variables'
 	TArray<FString> GetValidWords(const TArray<FString>& WordList) const;
-	void GetBullsCows(const FString& Guess, int32& BullCount, int32& CowCount) const; // When using '&' without 'const' means its an out parameter
+	FBullCowCount GetBullsCows(const FString& Guess) const; // When using '&' without 'const' means its an out parameter
 
 
 	// 'Member Variables'
