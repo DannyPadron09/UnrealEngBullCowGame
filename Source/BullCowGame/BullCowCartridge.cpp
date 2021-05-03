@@ -16,7 +16,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     
 }
 
-void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
+void UBullCowCartridge::OnInput(const FString& PlayerInput) // When the player hits enter
 {
 
     if (bGameOver)
@@ -26,7 +26,7 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     }
     else    // Checking Player Guess
     {
-        ProcessGuess(Input);
+        ProcessGuess(PlayerInput);
     }
 
 }
@@ -55,7 +55,7 @@ void UBullCowCartridge::EndGame()
     PrintLine(TEXT("\nPress enter to Play Again."));
 }
 
-void UBullCowCartridge::ProcessGuess(FString Guess)
+void UBullCowCartridge::ProcessGuess(const FString& Guess)
 {
     if(Guess == HiddenWord)
     {
@@ -100,7 +100,7 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
 
 }
 
-bool UBullCowCartridge::IsIsogram(FString Word) const
+bool UBullCowCartridge::IsIsogram(const FString& Word) const
 {
     /*  needs to test each letter
         starts at the first letter [0]
