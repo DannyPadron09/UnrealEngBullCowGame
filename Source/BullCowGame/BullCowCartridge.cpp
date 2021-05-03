@@ -35,7 +35,7 @@ void UBullCowCartridge::SetupGame()
 {
 
     // Sets HiddenWord
-    HiddenWord = TEXT("cake");
+    HiddenWord = GetValidWords(Words)[FMath::RandRange(0, GetValidWords(Words).Num() - 1)];
     // Set up lives
     Lives = HiddenWord.Len();
     
