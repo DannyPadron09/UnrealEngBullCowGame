@@ -127,7 +127,7 @@ bool UBullCowCartridge::IsIsogram(const FString& Word) const
 
 } 
 
-TArray<FString> UBullCowCartridge::GetValidWords(TArray<FString> WordList) const
+TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString>& WordList) const
 {
 
     TArray<FString> ValidWords;
