@@ -44,7 +44,7 @@ void UBullCowCartridge::SetupGame()
     PrintLine(TEXT("Guess the %i letter word!"), HiddenWord.Len());
     PrintLine(TEXT("You have %i lives."), Lives);
     PrintLine(TEXT("Enter your guess..."));
-    PrintLine(TEXT("The HiddenWord is: %s."), *HiddenWord);
+    // PrintLine(TEXT("The HiddenWord is: %s."), *HiddenWord); // Displays hiddenword (debug line)
 
 
 }
@@ -104,12 +104,6 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
 
 bool UBullCowCartridge::IsIsogram(const FString& Word) const
 {
-    /*  needs to test each letter
-        starts at the first letter [0]
-        compare it to the next letter
-        keep comparing until it reaches (Word.Len() - 1)
-        if any  of the letters are the same return 'false'
-    */
 
    int32 Index = 0;
    int32 Comparison = Index + 1;
@@ -148,10 +142,9 @@ TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString>& WordList
 
 FBullCowCount UBullCowCartridge::GetBullsCows(const FString& Guess) const
 {
+
     FBullCowCount Count;
 
-    // for every index Guess is the same as the index Hidden word, BullCount++
-    // if not a bull was it a cow? If yes then CowCount++
     for (int32 GuessIndex = 0; GuessIndex < Guess.Len(); GuessIndex++)
     {
         if (Guess[GuessIndex] == HiddenWord[GuessIndex])
@@ -170,5 +163,7 @@ FBullCowCount UBullCowCartridge::GetBullsCows(const FString& Guess) const
         }
         
     }
+
     return Count;
+
 }
